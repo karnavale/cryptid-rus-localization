@@ -2220,6 +2220,24 @@ return {
                     "{C:chips}+#4#{} фишек"
                 }
             },
+            c_cry_universe = {
+                name = 'Вся чёртова Вселенная',
+                text = {
+                    "{S:0.8}({S:0.8,V:1}ур.#1#{S:0.8}){} Повышает уровень комбинации",
+                    "{C:attention}#2#",
+                    "{C:mult}+#3#{} множ. и",
+                    "{C:chips}+#4#{} фишек"
+                }
+            },
+			c_cry_sunplanet = {
+                name = 'Солнце',
+                text = {
+                    "{S:0.8}({S:0.8,V:1}ур.#1#{S:0.8}){}",
+                    "Повышает уровень",
+		    "{C:attention}Вознесенных{} рук на {X:gold,C:white}0.05{}",
+		    "{C:inactive}(сейчас {X:gold,C:white}X(#2#^asc){C:inactive})"
+                }
+            },
         },
         Sleeve = {
             sleeve_cry_ccd_sleeve = {
@@ -3113,6 +3131,30 @@ return {
                     "Когда {C:cry_code}срабатывает{} этот Джокер,",
                     "срабатывает и {C:cry_code}#1#",
                 },
+            cry_flickering = {
+                name = "Flickering",
+                text = {
+                    "Destroyed after",
+                    "{C:attention}#1#{} triggers",
+                    "{C:inactive}({C:attention}#2#{C:inactive} remaining)"
+                },
+            },
+            cry_flickering_desc = { --used by choco dice
+                name = "Flickering",
+                text = {
+                    "Destroyed after",
+                    "{C:attention}#1#{} triggers",
+                },
+            },
+            cry_possessed = {
+                name = "Possessed",
+                text = {
+                    "{C:attention}Disables{} and {C:attention}reverses{}",
+                    "effects, if possible",
+                    "Destroyed along with {C:attention}Ghost"
+                },
+            },
+            --todo? add candy jokers to list
             },
             food_jokers = {
                 name = "Съедобные джокеры",
@@ -3122,6 +3164,114 @@ return {
                     "{s:0.8}Рамен, Зельцер, Огурчик, Перчик чили, Карамель,",
                     "{s:0.8}Сладость из прошлого, Еда из Макдональдса и т.д.",
                 },
+            },
+            ev_cry_choco0 = {
+                name = "",
+                text = {
+                    "Details of an active",
+                    "{C:cry_ascendant,E:1}event{} will appear here"
+                }
+            },
+            ev_cry_choco1 = {
+                name = "1: Possession",
+                text = {
+                    "{C:attention}Jokers{} and playing cards have a",
+                    "{C:green}1 in 3{} chance of gaining Flickering",
+                    "Create a {C:attention}Ghost",
+                    "{C:inactive,s:0.7}You've been possessed by a ghost, and your",
+                    "{C:inactive,s:0.7}consciousness is flickering in and out."
+                }
+            },
+            ev_cry_choco2 = {
+                name = "2: Haunted House",
+                text = {
+                    "Prevents skipping {C:attention}Blind{}",
+                    "One {C:attention}reroll{} allowed per shop",
+                    "{C:attention}Voucher{} prices are doubled",
+                    "{C:inactive,s:0.7}Spooky spirits have taken over! Don't touch",
+                    "{C:inactive,s:0.7}anything and get out as soon as possible!",
+                }
+            },
+            ev_cry_choco3 = {
+                name = "3: Witch's Brews",
+                text = {
+                    "Create 3 {C:attention}Potions",
+                    "Use one by the end of the {C:attention}Small Blind{},",
+                    "or {C:attention}all{} maluses will be applied this {C:attention}Ante",
+                    "{C:inactive,s:0.7}You have been kidnapped by a witch!",
+                    "{C:inactive,s:0.7}She offers you three potions, watching you closely.",
+                    "{C:inactive,s:0.7}Pick one, lest she makes the decision for you.",
+                }
+            },
+            ev_cry_choco4 = {
+                name = "4: Lunar Abyss",
+                text = {
+                    "Played cards have a {C:green}1 in 4{} chance",
+                    "to turn into a random {C:club}Club{} face card",
+                    "Divide {C:attention}Mult{} by number of played face cards",
+                    "{C:inactive,s:0.7}Even a man who's pure at heart",
+                    "{C:inactive,s:0.7}and says his prayers by night..."
+                }
+            },
+            ev_cry_choco5 = {
+                name = "5: Bloodsucker",
+                text = {
+                    "Remove {C:attention}Enhancements{} from all played cards",
+                    "{C:green}1 in 3{} chance to destroy",
+                    "{C:heart}Heart{} and {C:diamond}Diamond{} cards",
+                    "{C:inactive,s:0.7}Be wary in the dead of night, for",
+                    "{C:inactive,s:0.7,E:1}they in the shadows{C:inactive,s:0.7} seek to quench their thirst..."
+                }
+            },
+            ev_cry_choco6 = {
+                name = "6: Please Take One",
+                text = {
+                    "At {C:attention}end of round{}, open a",
+                    "random {C:attention}Booster{} Pack",
+                    "{C:inactive,s:0.7}As you stroll down the streets, you spot a",
+                    "{C:inactive,s:0.7}box of various Booster Packs. Might as well grab one!"
+                }
+            },
+            ev_cry_choco7 = {
+                name = "7: Festive Atmosphere",
+                text = {
+                    "Create 3 {C:attention}Trick-or-Treat{} and 1 {C:attention}Candy Basket",
+                    "Shops have a {C:attention}Trick-or-Treat{} each round",
+                    "{C:cry_candy}Candies{} give {C:money}$3{} when obtained",
+                    "{C:inactive,s:0.7}The entire neighbourhood is decorated for spooky endeavours,",
+                    "{C:inactive,s:0.7}come indulge in the festive atmosphere!"
+                }
+            },
+            ev_cry_choco8 = {
+                name = "8: Candy Rain",
+                text = {
+                    "When {C:attention}Blind{} defeated, obtain 1 {C:cry_candy}Candy{}",
+                    "per hand remaining; Obtain a {C:attention}Food Joker{}",
+                    "when a {C:cry_candy}Candy{} is generated",
+                    "{C:inactive,s:0.7}Candies rain from the sky! Quick,",
+                    "{C:inactive,s:0.7,E:1}grab as much as you can!"
+                }
+            },
+            ev_cry_choco9 = {
+                name = "9: Ghostly Riches",
+                text = {
+                    "Gain {C:money}$20",
+                    "All {C:money}money{} earned is {C:attention}doubled",
+                    "{C:inactive,s:0.7}The spectre of a long-gone relative of yours",
+                    "{C:inactive,s:0.7}visits you in the middle of the night!",
+                    "{C:inactive,s:0.7}Without a word, they place a bag of money in your hands,",
+                    "{C:inactive,s:0.7}smile warmly, and wave as they fade into the air.",
+                }
+            },
+            ev_cry_choco10 = {
+                name = "10: Revered Antique",
+                text = {
+                    "A {C:legendary}Legendary{} {C:attention}Joker{} appears",
+                    "in the {C:attention}Voucher{} slot for {C:money}$50",
+                    "Only buyable as {C:attention}last{} item in shop",
+                    "{C:inactive,s:0.7}You've attracted the attention of a relic's spirit,",
+                    "{C:inactive,s:0.7}but it won't be easy to quell.",
+                }
             },
             cry_https_disabled = {
                 name = "M",
@@ -3284,11 +3434,20 @@ return {
             p_cry_meme_tbree = {
                 name = "Мемный набор",
                 text = {
-                    "Выберите и добавьте {C:attention}#1#{} из",
-                    "{C:attention}#2# мемных джокеров{}",
+                    "Выберите и добавьте",
+                    "{C:attention}#1#{} из {C:attention}#2# мемных джокеров{}",
                 },
             },
             undiscovered_code = {
+                name = "Не обнаружено",
+                text = {
+                    "Купите или используйте",
+                    "эту карту в партии",
+                    "без сида, чтобы",
+                    "узнать, что она делает"
+                }
+            },
+            undiscovered_unique = {
                 name = "Не обнаружено",
                 text = {
                     "Купите или используйте",
@@ -3312,6 +3471,12 @@ return {
                     "карты {C:planet}планет{} на сыгранную",
                     "{C:attention}покерную комбинацию{}, а затем",
                     "{C:red}уничтожает{} эту карту",
+                },
+            },
+            blurred_sdm0 = {
+                name = "a",
+                text = {
+                    "{C:inactive,s:0.8}\"I hate this card\" - SDM_0, 2024{}",
                 },
             },
         },
@@ -3347,14 +3512,14 @@ return {
             ach_cry_break_infinity = "Break Infinity",
             ach_cry_cryptid_the_cryptid = "Криптидим Криптида",
             ach_cry_exodia = "Экзотия",
-            ach_cry_freak_house = "Freak House",
+            ach_cry_freak_house = "Сумасшедший дом",
             ach_cry_googol_play_pass = "Googol Play Pass",
             ach_cry_haxxor = "}{4K39",
             ach_cry_home_realtor = "Home Realtor",
             ach_cry_jokes_on_you = "Joke's on You, Pal!",
-            ach_cry_niw_uoy = "!niW uoY",
+            ach_cry_niw_uoy = "!лидебоп ыТ",
             ach_cry_now_the_fun_begins = "Вот где и начинается веселье",
-            ach_cry_patience_virtue = "Patience is a Virtue",
+            ach_cry_patience_virtue = "Терпение - благодетель",
             ach_cry_perfectly_balanced = "Perfectly Balanced",
             ach_cry_pull_request = "Pull Request",
             ach_cry_traffic_jam = "Traffic Jam",
@@ -3364,24 +3529,24 @@ return {
         },
         achievement_descriptions = {
             ach_cry_ace_in_crash = 'check_for_unlock({type = "ace_in_crash"})',
-            ach_cry_blurred_blurred_joker = "Obtain Blurred Blurred Joker",
-            ach_cry_bullet_hell = "Have 15 AP Jokers",
+            ach_cry_blurred_blurred_joker = "Заполучите Размытого Размытого джокера",
+            ach_cry_bullet_hell = "Заполучите 15 Бронебойных джокеров",
             ach_cry_break_infinity = "Score 1.79e308 Chips in a single hand",
-            ach_cry_cryptid_the_cryptid = "Use Cryptid on Cryptid",
-            ach_cry_exodia = "Have 5 Exotic Jokers",
+            ach_cry_cryptid_the_cryptid = "Используйте Криптид на Криптид",
+            ach_cry_exodia = "Заполучите 5 Экзотических джокеров",
             ach_cry_freak_house = "Play a Flush House consisting of 6s and 9s of Hearts whilst possessing Nice",
             ach_cry_googol_play_pass = "Rig a Googol Play Card",
             ach_cry_haxxor = "Use a cheat code",
             ach_cry_home_realtor = "Activate Happy House before Ante 8 (without DoE/Antimatter)",
             ach_cry_jokes_on_you = "Trigger The Joke's effect on Ante 1 and win the run",
-            ach_cry_niw_uoy = "Reach Ante -8",
+            ach_cry_niw_uoy = "Достигните -8 Анте",
             ach_cry_now_the_fun_begins = "Заполучите Холст",
             ach_cry_patience_virtue = "Wait out Lavender Loop for 2 minutes before playing first hand and beat the blind",
             ach_cry_perfectly_balanced = "Beat Very Fair Deck on Ascendant Stake",
             ach_cry_pull_request = "Have ://COMMIT spawn the same Joker that it destroyed",
             ach_cry_traffic_jam = "Beat all Rush Hour challenges",
-            ach_cry_ult_full_skip = "Win in 1 round",
-            ach_cry_used_crash = "Use ://CRASH",
+            ach_cry_ult_full_skip = "Победите за 1 раунд",
+            ach_cry_used_crash = "Используйте ://СЛОМАТЬ",
             ach_cry_what_have_you_done = "Delete or Sacrifice an Exotic Joker",
         },
         challenge_names = {
@@ -3433,16 +3598,22 @@ return {
 
             cry_critical_hit_ex = "Critical Hit!",
             cry_critical_miss_ex = "Critical Miss!",
+			
+            cry_potion1 = "-1 to all Hand Levels",
+            cry_potion2 = "X1.15 Blind size",
+            cry_potion3 = "-1 Hand and Discard",
 
-            cry_debuff_oldhouse = "No Full Houses",
+            cry_debuff_oldhouse = "Без фулл-хаусов",
             cry_debuff_oldarm = "Must play 4 or fewer cards",
-            cry_debuff_oldpillar = "No Straights",
-            cry_debuff_oldflint = "No Flushes",
-            cry_debuff_oldmark = "No hands containing a Pair",
-            cry_debuff_obsidian_orb = "Applies abilities of all defeated bosses",
+            cry_debuff_oldpillar = "Без стритов",
+            cry_debuff_oldflint = "Без флешей",
+            cry_debuff_oldmark = "Без рук, содержащих пару",
+            cry_debuff_obsidian_orb = "Применяет способности всех побеждённых боссов",
 
-            k_code = "Code",
-            b_code_cards = "Code Cards",
+            k_code = "Код-карта",
+			k_unique = "Уникальная",
+            b_code_cards = "Код-карты",
+            b_unique_cards = "УНикальные карты",
             b_pull = "ВЫТЯНУТЬ",
             cry_hooked_ex = "Hooked!",
             k_end_blind = "End Blind",
@@ -3462,6 +3633,13 @@ return {
 
             b_flip = "FLIP",
             b_merge = "MERGE",
+			
+            cry_hand_bulwark = "Баррикада",
+            cry_hand_clusterfuck = "Кавардак",
+            cry_hand_ultpair = "Совершенная пара",
+
+            cry_asc_hands = "Возн. руки",
+            cry_p_star = "Звезда",
 
             cry_again_q = "Опять?",
             cry_curse = "Curse",
@@ -3478,20 +3656,32 @@ return {
             cry_plus_cryptid = "+1 Cryptid",
             cry_no_triggers = "No triggers left!",
             cry_unredeemed = "Unredeemed...",
-            cry_active = "Active",
-            cry_inactive = "Inactive",
+            cry_active = "Активно",
+            cry_inactive = "Неактивно",
 
             k_cry_epic = "Эпический",
             k_cry_exotic = "Экзотический",
             k_cry_candy = "Сладость",
             k_cry_cursed  = "Проклятый",
+            k_planet_disc = "Околозвёздный диск",
+            k_planet_satellite = "Естественные спутники",
+            k_planet_universe = "Настоящая чёртова Вселенная",
+
+            cry_notif_jimball_1 = "Джим-болл",
+            cry_notif_jimball_2 = "Об авторском праве",
+            cry_notif_jimball_d1 = "Jimball plays the song \"Funkytown\",",
+            cry_notif_jimball_d2 = "which is copyrighted and can't be",
+            cry_notif_jimball_d3 = "used for streams and videos.",
         },
         labels = {
             food_jokers = "Съедобный",
             banana = "Банан",
             code = "Код-карта",
+            unique = "Уникальный",
             cry_rigged = "Крапленый",
             cry_hooked = "Связанный",
+            cry_flickering = "Мерцающий",
+            cry_possessed = "Поглощённый",
 
             cry_green_seal = "Зелёная печать",
             cry_azure_seal = "Лазурная печать",
@@ -3614,6 +3804,10 @@ return {
                 "для победы с #2##1#",
                 "#2#ставкой#3#"
             },
+			
+            cry_art = {"Художник: #1#"},
+            cry_code = {"Код: #1#"},
+            cry_idea = {"Идея: #1#"}
         },
         v_text = {
             ch_c_cry_all_perishable = {"Все Джокеры являются {C:eternal}Временными{}"},
@@ -3625,7 +3819,11 @@ return {
             ch_c_cry_rush_hour = {"All Boss Blinds are {C:attention}The Clock{} or {C:attention}Lavender Loop"},
             ch_c_cry_rush_hour_ii = {"Все Блайнды являются {C:attention}Босс-блайндами{}"},
             ch_c_cry_rush_hour_iii = {"{C:attention}The Clock{} and {C:attention}Lavender Loop{} scale {C:attention}twice{} as fast"},
-            ch_c_cry_no_tags = {"Пропуск блайндов {C:attention}отключён{}"}
+            ch_c_cry_no_tags = {"Пропуск блайндов {C:attention}отключён{}"},
+            ch_c_cry_no_vouchers = {"{C:attention}Vouchers{} no longer appear in the shop"},
+            ch_c_cry_no_boosters = {"{C:attention}Booster Packs{} no longer appear in the shop"},
+            ch_c_cry_no_rerolls = {"Rerolling is {C:attention}disabled{}"},
+            ch_c_cry_no_consumables = {"{C:attention}Consumables{} no longer appear"}
         },
         -- Thanks to many members of the community for contributing to all of these quips!
         -- There's too many to credit so just go here: https://discord.com/channels/1116389027176787968/1209506360987877408/1237971471146553406
