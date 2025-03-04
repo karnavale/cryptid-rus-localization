@@ -1,3 +1,5 @@
+--These don't use the gameset system currently.
+--Will probably add when there's a way to view stakes in the Collection
 local pink = {
 	object_type = "Stake",
 	name = "cry-Pink Stake",
@@ -245,26 +247,6 @@ local twilight = {
 	order = 25,
 	colour = G.C.CRY_TWILIGHT,
 }
-local banana = {
-	object_type = "Sticker",
-	badge_colour = HEX("e8c500"),
-	prefix_config = { key = false },
-	key = "banana",
-	atlas = "sticker",
-	pos = { x = 5, y = 2 },
-	should_apply = false,
-	loc_vars = function(self, info_queue, card)
-		if card.ability.consumeable then
-			return { key = "cry_banana_consumeable", vars = { G.GAME.probabilities.normal or 1, 4 } }
-		elseif card.ability.set == "Voucher" then
-			return { key = "cry_banana_voucher", vars = { G.GAME.probabilities.normal or 1, 12 } }
-		elseif card.ability.set == "Booster" then
-			return { key = "cry_banana_booster" }
-		else
-			return { vars = { G.GAME.probabilities.normal or 1, 10 } }
-		end
-	end,
-}
 local verdant = {
 	object_type = "Stake",
 	name = "cry-Verdant Stake",
@@ -363,8 +345,7 @@ local ascendant = {
 	order = 32,
 	colour = G.C.CRY_ASCENDANT,
 }
-local stake_atlas = { object_type = "Atlas", key = "stake", 
-path = "stake_cry.png", px = 29, py = 29 }
+local stake_atlas = { object_type = "Atlas", key = "stake", path = "stake_cry.png", px = 29, py = 29 }
 return {
 	name = "More Stakes",
 	init = function(self)
@@ -454,9 +435,7 @@ return {
 					end,
 				}))
 				delay(0.3)
-				for i = 1, #G.jokers.cards do
-					G.jokers.cards[i]:calculate_joker({ remove_playing_cards = true, removed = destroyed_cards })
-				end
+				SMODS.calculate_context({ remove_playing_cards = true, removed = destroyed_cards })
 			end,
 		}, true)
 		SMODS.Consumable:take_ownership("familiar", {
@@ -500,9 +479,7 @@ return {
 					end,
 				}))
 				delay(0.3)
-				for i = 1, #G.jokers.cards do
-					G.jokers.cards[i]:calculate_joker({ remove_playing_cards = true, removed = destroyed_cards })
-				end
+				SMODS.calculate_context({ remove_playing_cards = true, removed = destroyed_cards })
 			end,
 		}, true)
 		SMODS.Consumable:take_ownership("incantation", {
@@ -546,9 +523,7 @@ return {
 					end,
 				}))
 				delay(0.3)
-				for i = 1, #G.jokers.cards do
-					G.jokers.cards[i]:calculate_joker({ remove_playing_cards = true, removed = destroyed_cards })
-				end
+				SMODS.calculate_context({ remove_playing_cards = true, removed = destroyed_cards })
 			end,
 		}, true)
 
@@ -602,6 +577,5 @@ return {
 		blossom,
 		azure,
 		ascendant,
-		banana,
 	},
 }

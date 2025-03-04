@@ -1,12 +1,4 @@
 if CardSleeves then
-	local atlasSleeves = SMODS.Atlas({
-		object_type = "Atlas",
-		key = "atlasSleeves",
-		path = "atlasSleeves.png",
-		px = 71,
-		py = 95,
-	})
-
 	local encodedsleeve = CardSleeves.Sleeve({
 		key = "encoded_sleeve",
 		name = "Encoded Sleeve",
@@ -24,19 +16,25 @@ if CardSleeves then
 			G.E_MANAGER:add_event(Event({
 				func = function()
 					if G.jokers then
-							-- Adding a before spawning becuase jen banned copy_paste
-							if G.P_CENTERS["j_cry_CodeJoker"] and (G.GAME.banned_keys and not G.GAME.banned_keys["j_cry_CodeJoker"]) then  
-								local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_cry_CodeJoker")
-								card:add_to_deck()
-								card:start_materialize()
-								G.jokers:emplace(card)
-							end
-							if G.P_CENTERS["j_cry_copypaste"] and (G.GAME.banned_keys and not G.GAME.banned_keys["j_cry_copypaste"]) then
-								local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_cry_copypaste")
-								card:add_to_deck()
-								card:start_materialize()
-								G.jokers:emplace(card)
-							end
+						-- Adding a before spawning becuase jen banned copy_paste
+						if
+							G.P_CENTERS["j_cry_CodeJoker"]
+							and (G.GAME.banned_keys and not G.GAME.banned_keys["j_cry_CodeJoker"])
+						then
+							local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_cry_CodeJoker")
+							card:add_to_deck()
+							card:start_materialize()
+							G.jokers:emplace(card)
+						end
+						if
+							G.P_CENTERS["j_cry_copypaste"]
+							and (G.GAME.banned_keys and not G.GAME.banned_keys["j_cry_copypaste"])
+						then
+							local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_cry_copypaste")
+							card:add_to_deck()
+							card:start_materialize()
+							G.jokers:emplace(card)
+						end
 						return true
 					end
 				end,
@@ -78,18 +76,12 @@ if CardSleeves then
 		config = { cry_misprint_min = 0.1, cry_misprint_max = 10 },
 		unlocked = true,
 		unlock_condition = { deck = "Misprint Deck", stake = 1 },
-		trigger_effect = function(self, args)
-			if args.context.create_card then
-				cry_misprintize(
-					args.context.card,
-					{ min = 0.1 * (G.GAME.modifiers.cry_misprint_min or 1), max = 10
-						* (G.GAME.modifiers.cry_misprint_max or 1) }
-				)
-			end
-		end,
 		apply = function(self)
-			G.GAME.modifiers.cry_misprint_min = self.config.cry_misprint_min
-			G.GAME.modifiers.cry_misprint_max = self.config.cry_misprint_max
+			G.GAME.modifiers.cry_misprint_min = (G.GAME.modifiers.cry_misprint_min or 1) * self.config.cry_misprint_min
+			G.GAME.modifiers.cry_misprint_max = (G.GAME.modifiers.cry_misprint_max or 1) * self.config.cry_misprint_max
+			if self.get_current_deck_key() == "b_cry_antimatter" then
+				G.GAME.modifiers.cry_misprint_min = 1
+			end
 		end,
 	})
 
@@ -353,20 +345,22 @@ if CardSleeves then
 			G.GAME.modifiers.cry_forced_draw_amount = self.config.cry_forced_draw_amount
 		end,
 	})
-	local sleeveitems = { atlasSleeves }
-	if CardSleeves and Cryptid.enabled["Misc. Decks"] then
-		sleeveitems[#sleeveitems + 1] = encodedsleeve
-		sleeveitems[#sleeveitems + 1] = equilibriumsleeve
-		sleeveitems[#sleeveitems + 1] = misprintsleeve
-		sleeveitems[#sleeveitems + 1] = infinitesleeve
-		sleeveitems[#sleeveitems + 1] = conveyorsleeve
-		sleeveitems[#sleeveitems + 1] = CCDsleeve
-		sleeveitems[#sleeveitems + 1] = wormholesleeve
-		sleeveitems[#sleeveitems + 1] = redeemedsleeve
-		sleeveitems[#sleeveitems + 1] = criticalsleeve
-		sleeveitems[#sleeveitems + 1] = legendarysleeve
-		sleeveitems[#sleeveitems + 1] = spookysleeve
-		sleeveitems[#sleeveitems + 1] = bountifulsleeve
+	local sleeveitems = {}
+	if CardSleeves then
+		sleeveitems = {
+			encodedsleeve,
+			equilibriumsleeve,
+			misprintsleeve,
+			infinitesleeve,
+			conveyorsleeve,
+			CCDsleeve,
+			wormholesleeve,
+			redeemedsleeve,
+			criticalsleeve,
+			legendarysleeve,
+			spookysleeve,
+			bountifulsleeve,
+		}
 	end
 end
 return { name = "Sleeves", init = function() end, items = { sleeveitems } }
